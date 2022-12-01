@@ -33,7 +33,7 @@ Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Conc
     vm_name : "ZCM_WEB”
     subnet_ocid : value of the ocid of the Subnet of ZCM WEB Server Instance @ Oracle Cloud Console
     user_data_file_path : After moving [ZCM_install_script.sh] file to [./terraform-oci-ansible-userdata/oci-ansible-server/] folder, Write this value as "./ZCM_install_script.sh"
-    create_security_group_rules : copy and paste the [security_rule.json] under `docs,files` folder
+    create_security_group_rules : Copy and paste the [security_rule.json] under `docs,files` folder
     ```
 
 3. Wait 10~20 minutes for the instance to operate.
@@ -41,7 +41,7 @@ Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Conc
 
 
 # Source and Target VM installation
-This section covers how you can install the Source and the Target VM. you should **ADD** VM information first, and then **GEN**ERATE VM.
+This section covers how you can install the Source and the Target VM. You should **ADD** VM information first, and then **GEN**ERATE VM.
 ## 1) ADD VM information
 1. Choose Cloud platform where you will install the VM.
 
@@ -52,7 +52,7 @@ This section covers how you can install the Source and the Target VM. you should
 
         <img src='./Image/2.Source_Target_Installation/2.png' width='500'>
 
-    - **Toggle List** : Select the region and the OS of the VM from each Toggle list.
+    - **Toggle List** : Select the value of the VM from each Toggle list.
 
         <img src='./Image/2.Source_Target_Installation/3.png' width='550'>
 
@@ -75,9 +75,9 @@ This section covers how you can install the Source and the Target VM. you should
 &nbsp;
 &nbsp;
 ## Notice / Precautions
-A Target VM must contain **minimum 1 additional disk** and **each additional Disk's Size must field must be over 50(GB)**
+A Target VM must contain **minimum 1 additional disk** and **each additional Disk's Size must be over 50(GB)**
 
-&nbsp;
+&nbsp; 
 ## VM information example
 To see examples of recommended values of each VM information field, refer to [VM-info-example](./docs,files/VM-info-example.md)
 
@@ -89,7 +89,7 @@ To see examples of recommended values of each VM information field, refer to [VM
 
 - To edit the values, click `Modify`. You can either click `Submit` to apply the changes, or click `cancel` to discard changes.
     ![](./Image/2.Source_Target_Installation/10.png)
-- By clicking `Copy`, you can duplicate the selected VM's information with "-1" added to the original name.
+- By clicking `Copy`, you can duplicate the selected VM's information with "-[number]" added to the original name.
 
     <img src='./Image/2.Source_Target_Installation/11Copy.png' width='557'>
 
@@ -104,7 +104,7 @@ After you add all of the VMs' information, you can generate the VM instances. It
 
     <img src='./Image/3.generate_vm/1.png' width='400'>
 
-2. You can check the status of the VM via `VM status`.
+2. You can check the status of the VM via `VM Status`.
 
     <img src='./Image/3.generate_vm/2.png' width='400'>
 
@@ -136,10 +136,11 @@ After installing Source and Target VM installation and agent installation, acces
     
     - Windows : 
         - Remote access to the source server and copy the downloaded agent file to the Source source server    
-        <img src='./Image/4.migration/0.1.png' width='300'>
+            <img src='./Image/4.migration/0.1.png' width='300'>
+        
         - After running the installation file, select the installation language and click OK
-        <img src='./Image/4.migration/0.2.png' width='300'>
-
+            
+            <img src='./Image/4.migration/0.2.png' width='300'>
         - Click "Next"
 
             <img src='./Image/4.migration/0.3.png' width='300'>
@@ -173,8 +174,7 @@ After installing Source and Target VM installation and agent installation, acces
         - This is where the agent is to be installed. If you want to install it on a different path, enter that path. The default installation route is /ZConverteragent.
 
             <img src='./Image/4.migration/6.png' width='600'>
-        - **This is the type selection of ZConverter Cloud Migration.
-            - If you use Public ZCM, choose Item 1, and if you use Private ZCM, select Item 2 and enter the IP of that ZCM.**
+        - This is the type selection of ZConverter Cloud Migration. If you use Public ZCM, choose Item 1, and if you use Private ZCM, select Item 2 and enter the IP of that ZCM.
 
                 <img src='./Image/4.migration/7.png' width='600'>
 
@@ -182,14 +182,14 @@ After installing Source and Target VM installation and agent installation, acces
 
             <img src='./Image/4.migration/8.png' width='600'>
 
-        - When the installation is complete as shown in the following screen, close the connection with the server and return to the z-cloud.net web portal.
+        - When the installation is completed as shown in the following screen, close the connection with the server and return to the z-cloud.net web portal.
 
             <img src='./Image/4.migration/9.png' width='600'>
 
             <img src='./Image/4.migration/10.png' width='600'>
 
     - Register a source server
-        - Click the "Load a server list" button to bring the server where the source agent is installed to the list.
+        - Click the `Load a server list` button to bring the server where the source agent is installed to the list.
 
             <img src='./Image/4.migration/11.png' width='600'>
 
@@ -208,8 +208,8 @@ After installing Source and Target VM installation and agent installation, acces
                 - "Basic" type: Local type storage that is created within the source server and stores images.
                     - We recommend creating a repository on a disk other than the disk to be migrated (when migrating Windows) or creating a repository in the root directory (when migrating Linux).
                 - "Advanced" type: Storage on a remote server. You can select a storage or other network storage within the target server.
-                    - Select the "Target Repository" menu if you want to create a repository within the target server to store the source image.
-            - Click "next".
+                    - Select the `Target Repository` menu if you want to create a repository within the target server to store the source image.
+            - Click `next`.
 
                 <img src='./Image/4.migration/14.png' width='600'>
 
@@ -251,7 +251,7 @@ After installing Source and Target VM installation and agent installation, acces
             <img src='./Image/4.migration/10.png' width='600'>
 
         - Register a target server
-            - Click the "Load a server list" button to bring the server where the target agent is installed to the list.
+            - Click the `Load a server list` button to bring the server where the target agent is installed to the list.
 
                 <img src='./Image/4.migration/11.png' width='600'>
 
@@ -278,11 +278,11 @@ After installing Source and Target VM installation and agent installation, acces
                 - Kernel update : Check if you want to update the kernel version of the server. (When you migrate Linux)
                 - Encryption (AES256) : Select if you want to apply data encryption during migration.
                 - After job script : Register the script file to be executed after migration is completed. (Only .cmd or .sh files can be registered.)
-            - Click "next".
+            - Click `next`.
 
                 <img src='./Image/4.migration/21.png' width='400'>       
             
-            - Press the "OK" button to start the migration.
+            - Press the `OK` button to start the migration.
 
                  <img src='./Image/4.migration/22.png' width='400'> 
 
@@ -292,11 +292,11 @@ After installing Source and Target VM installation and agent installation, acces
                        
 
 # Source VM/ Target VM Termination
-Delete the Source and Target VMs used for migration validation. Connect to the cloud console to stop ZCM_WEB VM so that it can be used again for customer meetings.
+Delete the Source and Target VMs used for migration validation. Connect to the Oracle Cloud console to stop ZCM_WEB VM so that it can be used again for customer meetings.
 
 
 - Terminate Source/Target VM
-    - Select the VM information you want to delete and click `Delete` - `Delete installed VM`(생성된 VM 삭제)
+    - Select the VM information that you want to delete and click `Delete` - `Delete installed VM`(생성된 VM 삭제)
 
         <img src='./Image/5.Termination/1.png' width='400'> 
 
