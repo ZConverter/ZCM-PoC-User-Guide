@@ -8,6 +8,7 @@ Target VM : OCI CentOS 7, OCI CentOS 7, OCI CentOS 7
 Follow the *instructions stated below.
 (*plain text : follow the instructions, "" : write as it is, [] : name of a file/folder)
 
+
 ## AWS Source VM
 
 - **Profile** : Use default value.
@@ -17,11 +18,12 @@ Follow the *instructions stated below.
 - **OS & OS_version** : "CentOS", "7"
     - To use a different OS and version, select from the toggle list.
 - **VM Name** :  Enter the name of the VM in accordance with the constraints.
-- **Image** : "ami-09e2a570cb404b37e"
+- **Image** : "ami-09e2a570cb404b37e (CentOS-7-2111-20220825_1.x86_64-d9a3032a-921c-4c6d-b150-bde168105e42)"
     - To use a different Image, select from the toggle list.
 - **Machine Type** : Use default value
     - To use a different Machine Type, select from the toggle list.
-- **Security Group ID** : Deselect `Automatically create a new security group` and select `sg-073eb02b16e13cb17 (zcon-demo)`
+- **CPU Count & Memory Size** : Use default value
+- **Security Group ID** : Deselect `Automatically create a new security group` and select "sg-073eb02b16e13cb17 (zcon-demo)"
     - To use a different Security Group, you must select from the toggle list which has valid Inbound rules for Migration.
 - **Login Key** : [aws_demo_key.pem]
     - To use a different key, use a pem Key generated at AWS Cloud Console
@@ -100,7 +102,7 @@ Follow the *instructions stated below.
     - To use a different Machine Type, select from the toggle list.
 - **OS & OS_version** : "CentOS", "7"
     - To use a different OS and version, select from the toggle list.
-- **Subnet** : Deselect `Automatically create a new subnet` and select `subnet-20210421-1418 (ocid1.subnet.oc1.ap-seoul-1.aaaaaaaaikxwifqksivdvnvl27k6mffo7cnvqv4xhw4rvcgjnc7yc7ydkc2q)`
+- **Subnet** : Deselect `Automatically create a new subnet` and select "subnet-20210421-1418 (ocid1.subnet.oc1.ap-seoul-1.aaaaaaaaikxwifqksivdvnvl27k6mffo7cnvqv4xhw4rvcgjnc7yc7ydkc2q)"
     - To use a different Subnet, you must select from the toggle list which has valid Inbound rules for Migration.
 - **Volume** : Use default value
     - To add additional disks, enter the size of the additional disk in accordance with the constraints.
