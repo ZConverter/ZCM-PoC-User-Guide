@@ -53,7 +53,7 @@ Follow the *instructions stated below.
 - **User data** : [azure-source-userdata.sh]
 
 &nbsp;
-## Azure Source VM
+## GCP Source VM
 
 - **Credentionals File** : [gcp_credentials.json]
     - To use a different login information, use the information file generated at GCP Cloud Console
