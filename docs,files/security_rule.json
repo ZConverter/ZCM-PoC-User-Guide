@@ -83,7 +83,7 @@
         "direction" : "ingress",
         "ethertype" : "IPv4",
         "protocol" : "tcp",
-        "port_range_max" : "5001",
+        "port_range_max" : "5005",
         "port_range_min" : "5001",
         "remote_ip_prefix" : "0.0.0.0/0"
     },
