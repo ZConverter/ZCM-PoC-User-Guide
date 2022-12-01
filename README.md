@@ -174,6 +174,7 @@ After installing Source and Target VM installation and agent installation, acces
         - This is where the agent is to be installed. If you want to install it on a different path, enter that path. The default installation route is /ZConverteragent.
 
             <img src='./Image/4.migration/6.png' width='600'>
+            
         - This is the type selection of ZConverter Cloud Migration. If you use Public ZCM, choose Item 1, and if you use Private ZCM, select Item 2 and enter the IP of that ZCM.
 
                 <img src='./Image/4.migration/7.png' width='600'>
