@@ -6,8 +6,8 @@
 
 The user data is script for automatically installing ZCM source and target agent on VMs. You can download userdata files from [here](https://www.zconverter.com/zm/scripts/).
 
-- Userdata for AWS source VM: `aws-source-cent.sh` 
-- Userdata for OCI target VM: `oci-target-cent.sh`
+- Userdata for AWS source VM: `aws-source-cent.sh` or `aws-source-ubuntu.sh` 
+- Userdata for OCI target VM: `oci-target-cent.sh` or `oci-target-ubuntu.sh`
 
 
 
