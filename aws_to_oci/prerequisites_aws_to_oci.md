@@ -1,4 +1,4 @@
-# Guide for Migration from AWS to OCI 
+# Prerequisites for Migration from AWS to OCI 
 
 ---
 
