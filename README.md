@@ -177,7 +177,7 @@ After installing Source and Target VM installation and agent installation, acces
             
         - This is the type selection of ZConverter Cloud Migration. If you use Public ZCM, choose Item 1, and if you use Private ZCM, select Item 2 and enter the IP of that ZCM.
 
-                <img src='./Image/4.migration/7.png' width='600'>
+            <img src='./Image/4.migration/7.png' width='600'>
 
         - This is the part where you enter the account of ZCM that you are currently using.
 
