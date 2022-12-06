@@ -10,6 +10,7 @@
 2. Prepare API Keys for OCI CLI login. Refer to [How to
 Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm) for details.
 
+<br>
 
 ### Prerequisites for AWS
 
@@ -155,6 +156,8 @@ Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Conc
     ]
     ```
     
+<br>
+
 ### Prerequisites for OCI
 
 1. **Authorizing for CLI**
@@ -392,6 +395,7 @@ Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Conc
 
 ---
 
+<br> 
 
 ## Install ZCM_WEB VM 
 1. Download `zcm_api_install.sh` from the following [link](https://www.zconverter.com/zm/zcm_api_install.sh).
@@ -619,6 +623,8 @@ You should **ADD** VM information first, and then **GEN**ERATE VM.
 
 ---
 
+<br>
+
 ## ZConverter Migration demonstration
 After installing Source and Target VM installation and agent installation, access the `ZConverter Migration management portal` to proceed with the migration. 
 
@@ -796,6 +802,8 @@ After installing Source and Target VM installation and agent installation, acces
                  <img src='./Image/4.migration/23.png' width='400'> 
 
 ---
+
+<br>
 
 ## Teminate Source and Target VM
 Delete the Source and Target VMs used for migration validation. Connect to the Oracle Cloud console to stop ZCM_WEB VM so that it can be used again for customer meetings.
