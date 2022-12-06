@@ -1,19 +1,17 @@
-# Prerequisites for Migration from AWS to OCI 
+# ZCM PoC User Guide from AWS to OCI 
 
 ---
-
-## Userdata for ZCM Source and Target
-
-The user data is script for automatically installing ZCM source and target agent on VMs. You can download userdata files from [here](https://www.zconverter.com/zm/scripts/).
-
-- Userdata for AWS source VM: `aws-source-cent.sh` or `aws-source-ubuntu.sh` 
-- Userdata for OCI target VM: `oci-target-cent.sh` or `oci-target-ubuntu.sh`
-
-
-
 ## Prerequisites
 
-### AWS
+1. The user data is script for automatically installing ZCM source and target agent on VMs. You can download userdata files from [here](https://www.zconverter.com/zm/scripts/).
+    - Userdata for AWS source VM: `aws-source-cent.sh` or `aws-source-ubuntu.sh` 
+    - Userdata for OCI target VM: `oci-target-cent.sh` or `oci-target-ubuntu.sh`
+
+2. Prepare API Keys for OCI CLI login. Refer to [How to
+Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm) for details.
+
+
+### Prerequisites for AWS
 
 1. **Authorizing for CLI**
     
@@ -157,7 +155,7 @@ The user data is script for automatically installing ZCM source and target agent
     ]
     ```
     
-### OCI
+### Prerequisites for OCI
 
 1. **Authorizing for CLI**
     
@@ -394,190 +392,228 @@ The user data is script for automatically installing ZCM source and target agent
 
 ---
 
-## Add Source and Target VM Info
 
-### AWS Source VM
+## Install ZCM_WEB VM 
+1. Download `zcm_api_install.sh` from the following [link](https://www.zconverter.com/zm/zcm_api_install.sh).
 
-- **Profile**
+2. Install ZCM_WEB Instances following the steps on this [github link](https://github.com/ZConverter-samples/terraform-oci-ansible-userdata).
+
+    #### [ Requirements for ZCM_WEB VM ]
+    &nbsp;Edit `./oci-ansible-server.oci_terraform_ansible_server.json` as listed below* 
     
-    Use default value
-    
-- **Access Key & Secret Access Key & Login Region**
-    
-    Use default value
-    
+    (*plain text : follow the instructions, "" : write as it is, [] : name of a file/folder)
     ```
-    You can use your access key and secret access key created in AWS console. 
+    provider : value of [OCI API key] that was created on the previous step  
+    vm_name : "ZCM_WEB”
+    subnet_ocid : value of the ocid of the Subnet of ZCM WEB Server Instance @ Oracle Cloud Console
+    user_data_file_path : After moving [ZCM_install_script.sh] file to [./terraform-oci-ansible-userdata/oci-ansible-server/] folder, Write this value as "./ZCM_install_script.sh"
+    create_security_group_rules : Copy and paste the [security_rule.json] under `docs,files` folder
     ```
-    
-- **Region**
-    
-    Use default value
-    
-- **OS & OS_version**
-    
-    Select **CentOS , 7**
-    
-    ```
-    Select OS and OS_version for VM.
-    ```
-    
-- **VM Name**
-    
-    ```bash
-    Specify the name of VM.
-    ```
-    
-- **Image**
-    
-    Select ****ami-09e2a570cb404b37e (CentOS-7-2111-20220825_1.x86_64-d9a3032a-921c-4c6d-b150-bde168105e42)****
-    
-    ```bash
-    Select an AMI image on the toggle list for VM.
-    If you select the AMI of AWS marketplace, you must subscribe to the image in AWS console before using it. 
-    ```
-    
-- **Instance Type**
-    
-    Use default value
-    
-    ```
-    Select a Instance type for VM.
-    ```
-    
-- **CPU Count & Memory Size**
-    
-    Use default value
-    
-    ```
-    Select CPU Count for VM.
-    ```
-    
-- **Security Group Id**
-    
-    After deselect `Automatically create a new security group` option, select **sg-073eb02b16e13cb17 (zcon-demo)**
-    
-    ```
-    If you select the "Automatically create a new security group" option, You can create a new security group for ZCM migration.
-    For more information, see "Prerequisites and VM Info by Cloud platform - AWS" section. 
-    ```
-    
-- ****Login Key [ .pem ]****
-    
-    Upload **aws_demo_key.pem** file
-    
-    ```
-    You can use a public SSH key of your key pair imported in AWS console. 
-    ```
-    
-- **Volume**
-    
-    Use default value
-    
-    ```bash
-    If you want to attach one or more additional disks to the VM, list sizes with comma(,).
-    ```
-    
-- **User data** ****[ .sh / .ps1 ]****
-    
-    Upload **aws-source-userdata.sh** file
-    
+
+3. Wait 10~20 minutes for the instance to operate.
+4. Access the installed instance's public IP with port 4001.
+
+
 ---
 
-### OCI Target VM
+## Install Source and Target VM
+You should **ADD** VM information first, and then **GEN**ERATE VM.
 
-- **Credentials File Upload [ Config File ]**
-    
-    Upload **oci_config** file 
-    
-- **Config Key File [ .pem ]**
-    
-    Upload **oci_config.pem** file 
-    
-    ```bash
-    You can use your config and config key file (.pem) created in Oracle Cloud console.
-    ```
-    
-- **Compartment Id**
-    
-    Use default value
-    
-- **Available Domain**
-    
-    Use default value
-    
-- **VM Name**
-    
-    ```bash
-    Specify the name of VM.
-    ```
-    
-- **Profile**
-    
-    Insert the profile in your config file  
-    
-    ```bash
-    Example of Config file)
-    [DEFAULT] // ← profile
-    user=*****************
-    fingerprint=*****************
-    tenancy=*****************
-    region=*****************
-    key_file=*****************
-    ```
-    
-- **Machine Type [ Shape ]**
-    
-    Use default value
-    
-    ```
-    Select a Machine type for VM.
-    ```
-    
-- **CPU Count & Memory Size**
-    
-    Use default value
-    
-    ```
-    Specify CPU Count and Memory Size for VM.
-    ```
-    
-- **OS & OS_version**
-    
-    Select **CentOS , 7** 
-    
-    ```
-    Select OS and OS_version for VM.
-    ```
-    
-- **Subnet ID**
-    
-    After deselect `Automatically create a new subnet` , select **subnet-20210421-1418 (ocid1.subnet.oc1.ap-seoul-1.aaaaaaaaikxwifqksivdvnvl27k6mffo7cnvqv4xhw4rvcgjnc7yc7ydkc2q)**
-    
-    ```
-    If you select the "Automatically create a new subnet" option, You can create a new subnet for ZCM migration.
-    For more informatino, see "Prerequisites and VM Info by Cloud platform - OCI" section. 
-    ```
-    
-- **Volume**
-    
-    Insert **50**
-    
-    ```bash
-    If you want to attach one or more additional disks to the VM, list sizes with comma(,).
-    Target VM need at least an pesistent disk. The disk size must be at least 50GB
-    ```
-    
-- **Login Key [ .pub ]**
-    
-    Upload **oci_gcp_demo_key.pub** file
-    
-    ```bash
-    You can use a public key of your SSH key pair. The key must use the RSA format
-    ```
-    
-- **User data [ .sh / .ps1 ]**
-    
-    Upload **oci-target-userdata.sh** file
+1) Choose `AWS` menu.
+2) Click `ADD` and register informatino of the source VM.
 
+    <details>
+    <summary> Example for AWS Source VM </summary>
+    <div markdown="1">
+
+    - **Profile**
+
+        Use default value
+
+    - **Access Key & Secret Access Key & Login Region**
+
+        Use default value
+
+        ```
+        You can use your access key and secret access key created in AWS console. 
+        ```
+
+    - **Region**
+
+        Use default value
+
+    - **OS & OS_version**
+
+        Select **CentOS , 7**
+
+        ```
+        Select OS and OS_version for VM.
+        ```
+
+    - **VM Name**
+
+        ```bash
+        Specify the name of VM.
+        ```
+
+    - **Image**
+
+        Select ****ami-09e2a570cb404b37e (CentOS-7-2111-20220825_1.x86_64-d9a3032a-921c-4c6d-b150-bde168105e42)****
+
+        ```bash
+        Select an AMI image on the toggle list for VM.
+        If you select the AMI of AWS marketplace, you must subscribe to the image in AWS console before using it. 
+        ```
+
+    - **Instance Type**
+
+        Use default value
+
+        ```
+        Select a Instance type for VM.
+        ```
+
+    - **CPU Count & Memory Size**
+
+        Use default value
+
+        ```
+        Select CPU Count for VM.
+        ```
+
+    - **Security Group Id**
+
+        After deselect `Automatically create a new security group` option, select **sg-073eb02b16e13cb17 (zcon-demo)**
+
+        ```
+        If you select the "Automatically create a new security group" option, You can create a new security group for ZCM migration.
+        For more information, see "Prerequisites and VM Info by Cloud platform - AWS" section. 
+        ```
+
+    - ****Login Key [ .pem ]****
+
+        Upload **aws_demo_key.pem** file
+
+        ```
+        You can use a public SSH key of your key pair imported in AWS console. 
+        ```
+
+    - **Volume**
+
+        Use default value
+
+        ```bash
+        If you want to attach one or more additional disks to the VM, list sizes with comma(,).
+        ```
+
+    - **User data** ****[ .sh / .ps1 ]****
+
+        Upload **aws-source-userdata.sh** file
+    </div>
+    </details>
+
+3) Choose 'OCI' menu.
+4) Click `ADD` and register information for the target VM.
+
+    <details>
+    <summary> Example for OCI target VM </summary>
+    <div markdown="1">
+
+    - **Credentials File Upload [ Config File ]**
+
+        Upload **oci_config** file 
+
+    - **Config Key File [ .pem ]**
+
+        Upload **oci_config.pem** file 
+
+        ```bash
+        You can use your config and config key file (.pem) created in Oracle Cloud console.
+        ```
+
+    - **Compartment Id**
+
+        Use default value
+
+    - **Available Domain**
+
+        Use default value
+
+    - **VM Name**
+
+        ```bash
+        Specify the name of VM.
+        ```
+
+    - **Profile**
+
+        Insert the profile in your config file  
+
+        ```bash
+        Example of Config file)
+        [DEFAULT] // ← profile
+        user=*****************
+        fingerprint=*****************
+        tenancy=*****************
+        region=*****************
+        key_file=*****************
+        ```
+
+    - **Machine Type [ Shape ]**
+
+        Use default value
+
+        ```
+        Select a Machine type for VM.
+        ```
+
+    - **CPU Count & Memory Size**
+
+        Use default value
+
+        ```
+        Specify CPU Count and Memory Size for VM.
+        ```
+
+    - **OS & OS_version**
+
+        Select **CentOS , 7** 
+
+        ```
+        Select OS and OS_version for VM.
+        ```
+
+    - **Subnet ID**
+
+        After deselect `Automatically create a new subnet` , select **subnet-20210421-1418 (ocid1.subnet.oc1.ap-seoul-1.aaaaaaaaikxwifqksivdvnvl27k6mffo7cnvqv4xhw4rvcgjnc7yc7ydkc2q)**
+
+        ```
+        If you select the "Automatically create a new subnet" option, You can create a new subnet for ZCM migration.
+        For more informatino, see "Prerequisites and VM Info by Cloud platform - OCI" section. 
+        ```
+
+    - **Volume**
+
+        Insert **50**
+
+        ```bash
+        If you want to attach one or more additional disks to the VM, list sizes with comma(,).
+        Target VM need at least an pesistent disk. The disk size must be at least 50GB
+        ```
+
+    - **Login Key [ .pub ]**
+
+        Upload **oci_gcp_demo_key.pub** file
+
+        ```bash
+        You can use a public key of your SSH key pair. The key must use the RSA format
+        ```
+
+    - **User data [ .sh / .ps1 ]**
+
+        Upload **oci-target-userdata.sh** file
+    </div>
+    </details>
+
+5) Select the VM informations to be installed and click `Gen` to create.  
     
