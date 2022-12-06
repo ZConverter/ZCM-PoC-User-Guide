@@ -1,7 +1,7 @@
 # ZCM PoC User Guide from AWS to OCI 
 
 ---
-## Prerequisites
+## Before you begin
 
 1. The user data is script for automatically installing ZCM source and target agent on VMs. You can download userdata files from [here](https://www.zconverter.com/zm/scripts/).
     - Userdata for AWS source VM: `aws-source-cent.sh` or `aws-source-ubuntu.sh` 
@@ -617,6 +617,7 @@ You should **ADD** VM information first, and then **GEN**ERATE VM.
 
 5) Select the VM informations to be installed and click `Gen` to create.  
 
+---
 
 ## ZConverter Migration demonstration
 After installing Source and Target VM installation and agent installation, access the `ZConverter Migration management portal` to proceed with the migration. 
@@ -793,3 +794,24 @@ After installing Source and Target VM installation and agent installation, acces
             - When the migration operation starts, it automatically goes to the "Monitoring Job" page.
 
                  <img src='./Image/4.migration/23.png' width='400'> 
+
+---
+
+## Teminate Source and Target VM
+Delete the Source and Target VMs used for migration validation. Connect to the Oracle Cloud console to stop ZCM_WEB VM so that it can be used again for customer meetings.
+
+
+1) Select the VM information that you want to delete and click `Delete` - `Delete installed VM`(생성된 VM 삭제)
+
+    <img src='./Image/5.Termination/1.png' width='400'> 
+
+    <img src='./Image/5.Termination/2.png' width='400'> 
+
+2) (Optional) If you want to delete the registered VM information, click `Delete` - `Delete Registered VM information` (등록된 VM 정보 삭제)
+
+    <img src='./Image/5.Termination/3.png' width='400'> 
+
+3) Stop ZCM_WEB Server
+    
+    Connect to Oracle cloud and "STOP" ZCM_WEB VM instance. (NOT "Terminate")
+
