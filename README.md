@@ -31,6 +31,7 @@ Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Conc
     ```
     provider : value of [OCI API key] that was created on the previous step  
     vm_name : "ZCM_WEB”
+    OS & OS_version: you must use Canonical Ubuntu 18.04.
     subnet_ocid : value of the ocid of the Subnet of ZCM WEB Server Instance @ Oracle Cloud Console
     user_data_file_path : After moving [ZCM_install_script.sh] file to [./terraform-oci-ansible-userdata/oci-ansible-server/] folder, Write this value as "./ZCM_install_script.sh"
     create_security_group_rules : Copy and paste the [security_rule.json] under `docs,files` folder
